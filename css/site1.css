@@ -77,12 +77,21 @@ li{
 .banner{
   width: 100%;
   height: 570px;
+  overflow: hidden;
 }
 
 .banner_img{
   width: 100%;
   height: 100%;
 }
+
+
+.banner_img_next{
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
 
 @media (min-width: 1020px) {
   .navbar-brand {
@@ -97,6 +106,101 @@ li{
   }
 }
 
+/*Position navigation box*/
+.navigation {
+  position: absolute;
+  bottom: 90px;
+  left: 90%;
+  margin-left: 50px;
+
+  transform: translateX(-50%);
+  display: flex;
+
+}
+
+@media (max-width:1278px) {
+  .navigation {
+    position: absolute;
+    bottom: 90px;
+    left: 90%;
+    margin-left: 50px;
+    visibility: hidden;
+    overflow: hidden;
+    transform: translateX(-50%);
+    display: flex;
+
+  }
+}
+
+
+
+/*Shape navigation buttons into radios*/
+.bar{
+  color: white;
+  font-size: 40px;
+  display: block;
+}
+
+
+/*Hide original html radios*/
+input[name="r"] {
+position: absolute;
+visibility: hidden;
+}
+
+
+/*Resize "slides" container into 500% - which is 5 images 100% each. Slides container is the box that containis all images. And make images in one line by flex.*/
+.slides {
+  width: 500%;
+  height: 100%;
+  display: flex;
+
+}
+
+/*Make each slide's size 20%. Which is 1/5 of "slides" container where each slide is in, since there are 5 images used.*/
+
+.slide {
+  width: 20%;
+  transition: 0.3s;
+}
+
+/*Make each actual image 100% of size of "slide" container. Since images are in .slide container*/
+
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+
+/*Now when certain radio botton is checked move the first image to the left by certain degree, so that next images is shown in the "slideshow" container.*/
+
+#r1:checked ~ .s1 {
+  margin-left: 0;
+}
+#r2:checked ~ .s1 {
+  margin-left: -20%;
+}
+
+/*Arrows*/
+
+div.arrow-left {
+  display: block;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+div.arrow-right {
+    display: block;
+    width: 50px;
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
 
 
 .hover_banner{
@@ -120,7 +224,7 @@ font-size: 50px;
 .hover_banner1{
   position: absolute;
   font-size: 36px;
-  margin: 280px 0 0 45%;
+  margin: 280px 0 0 44%;
   color: white;
 }
 
@@ -137,7 +241,7 @@ font-size: 50px;
 
 .banner_batn{
   position: absolute;
-  margin: 400px 0 0 44.5%;
+  margin: 400px 0 0 43%;
   font-size: 20px;
   margin-right: 0;
   color: white;
